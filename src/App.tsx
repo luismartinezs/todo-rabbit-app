@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Todo from "@/components/Todo.tsx";
+import Todo from "@/components/Todo";
 import { db } from "@/firebase.js";
 import {
   collection,
@@ -13,7 +13,7 @@ import {
 const q = query(collection(db, "todos"), orderBy("timestamp", "desc"));
 
 function App(): JSX.Element {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([] as Array<{ id: string }>);
   const [input, setInput] = useState("");
   useEffect(() => {
     onSnapshot(q, (snapshot) => {
