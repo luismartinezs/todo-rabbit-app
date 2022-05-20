@@ -4,6 +4,7 @@ import {
   loginEmailPassword,
   createAccount,
   signInWithGoogle,
+  sendPasswordReset,
 } from "@/firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,14 +22,6 @@ const Login = () => {
     }
     // if (user) navigate("/");
   }, [user, loading]);
-
-  const handleLogin = (event) => {
-    loginEmailPassword(email, password);
-  };
-  const handleRegister = (event) => {
-    event.preventDefault();
-    createAccount(email, password);
-  };
 
   return (
     <div className="flex flex-col space-y-4">
@@ -68,9 +61,9 @@ const Login = () => {
       >
         Register
       </button>
-      <div>
-        <Link to="/reset">Forgot Password</Link>
-      </div>
+      <button onClick={() => sendPasswordReset(email)}>
+        Forgot Password
+      </button>
     </div>
   );
 };
