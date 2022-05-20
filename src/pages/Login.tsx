@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { loginEmailPassword } from "@/firebase/auth";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("saito200@gmail.com");
+  const [password, setPassword] = useState("admin1234");
 
   const handleLoginEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,7 +19,7 @@ const Login = () => {
   };
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    loginEmailPassword(email, password);
   };
   return (
     <>
@@ -28,11 +29,13 @@ const Login = () => {
           type="text"
           onChange={handleLoginEmailChange}
           placeholder="email"
+          value={email}
         />
         <input
           type="text"
           onChange={handleLoginPasswordChange}
           placeholder="password"
+          value={password}
         />
         <button
           className="border border-primary-500 hover:bg-primary-200"
