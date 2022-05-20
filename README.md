@@ -7,7 +7,7 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [x] Read, write, delete
 - [x] Deploy to test
 - [ ] Deploy to production
-- [ ] User login
+- [x] User login
 - [ ] Storybook
 
 ## Dev notes
