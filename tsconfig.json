@@ -19,7 +19,12 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["@testing-library/react", "react/next", "react-dom/next", "unplugin-icons/types/react"]
+    "types": [
+      "@testing-library/react",
+      "react/next",
+      "react-dom/next",
+      "unplugin-icons/types/react"
+    ]
   },
   "include": ["src", "test"],
   "references": [{ "path": "./tsconfig.node.json" }]

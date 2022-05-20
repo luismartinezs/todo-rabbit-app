@@ -1,6 +1,6 @@
 const firebaseConfig = {
-  apiKey: import.meta.env.FIREBASE_API_KEY,
-  authDomain: import.meta.env.FIREBASE_AUTH_DOMAIN,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: "todorabbit-1b25c",
   storageBucket: "todorabbit-1b25c.appspot.com",
   messagingSenderId: "308390139039",
