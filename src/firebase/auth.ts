@@ -2,6 +2,7 @@ import {
   getAuth,
   connectAuthEmulator,
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import firebaseApp from "@/firebase/app";
 
@@ -11,14 +12,31 @@ connectAuthEmulator(auth, "http://localhost:9099");
 const loginEmailPassword = async (email = "", password = "") => {
   if (!email || !password) return;
 
-  console.log(email, password)
-
-  const userCredential = await signInWithEmailAndPassword(
-    auth,
-    email,
-    password
-  );
-  console.log(userCredential.user);
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log(userCredential.user);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export { auth, loginEmailPassword };
+const createAccount = async (email = "", password = "") => {
+  if (!email || !password) return;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log(userCredential.user);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { auth, loginEmailPassword, createAccount };
