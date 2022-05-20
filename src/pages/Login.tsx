@@ -7,11 +7,11 @@ import {
   sendPasswordReset,
 } from "@/firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState("saito200@gmail.com");
-  const [password, setPassword] = useState("admin1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -61,9 +61,7 @@ const Login = () => {
       >
         Register
       </button>
-      <button onClick={() => sendPasswordReset(email)}>
-        Forgot Password
-      </button>
+      <button onClick={() => sendPasswordReset(email)}>Forgot Password</button>
     </div>
   );
 };

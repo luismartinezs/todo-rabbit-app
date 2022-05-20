@@ -14,7 +14,7 @@ import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
 import db from "@/firebase/firestore";
 
 const auth = getAuth(firebaseApp);
-connectAuthEmulator(auth, "http://localhost:9099");
+import.meta.env.VITE_FIREBASE_EMULATOR && connectAuthEmulator(auth, "http://localhost:9099");
 
 const loginEmailPassword = async (email = "", password = "") => {
   if (!email || !password) return;

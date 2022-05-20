@@ -11,8 +11,6 @@ import {
   onSnapshot,
   addDoc,
   serverTimestamp,
-  where,
-  getDocs,
 } from "firebase/firestore";
 
 const q = query(collection(db, "todos"), orderBy("timestamp", "desc"));
