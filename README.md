@@ -8,6 +8,7 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [x] Deploy to test
 - [ ] Deploy to production
 - [x] User login
+- [ ] Each user has their own todos
 - [ ] Storybook
 
 ## Dev notes
