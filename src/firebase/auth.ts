@@ -47,17 +47,6 @@ const createAccount = async (email = "", password = "") => {
   }
 };
 
-const monitorAuthState = async () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log(user);
-      // show app
-    } else {
-      // show login form
-    }
-  });
-};
-
 const googleProvider = new GoogleAuthProvider();
 
 const signInWithGoogle = async () => {
@@ -96,7 +85,6 @@ export {
   auth,
   loginEmailPassword,
   createAccount,
-  monitorAuthState,
   sendPasswordReset,
   signInWithGoogle,
   logout,
