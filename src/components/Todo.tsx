@@ -1,4 +1,4 @@
-import { db } from "@/firebase.js";
+import { db } from "@/firebase/index";
 import { doc, deleteDoc } from "firebase/firestore";
 import IconTrashCanOutline from "~icons/mdi/trash-can-outline";
 
