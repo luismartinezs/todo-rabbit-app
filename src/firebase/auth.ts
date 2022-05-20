@@ -3,6 +3,7 @@ import {
   connectAuthEmulator,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
 import firebaseApp from "@/firebase/app";
 
@@ -39,4 +40,15 @@ const createAccount = async (email = "", password = "") => {
   }
 };
 
-export { auth, loginEmailPassword, createAccount };
+const monitorAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      console.log(user)
+      // show app
+    } else {
+      // show login form
+    }
+  })
+}
+
+export { auth, loginEmailPassword, createAccount, monitorAuthState };
