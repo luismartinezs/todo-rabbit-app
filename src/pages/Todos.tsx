@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { auth, logout } from "@/firebase/auth";
 import Todo from "@/components/Todo";
 import { db } from "@/firebase/index";
 import {
@@ -8,14 +11,22 @@ import {
   onSnapshot,
   addDoc,
   serverTimestamp,
+  where,
+  getDocs,
 } from "firebase/firestore";
 
 const q = query(collection(db, "todos"), orderBy("timestamp", "desc"));
 
 const Todos = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
   const [todos, setTodos] = useState([] as Array<{ id: string }>);
   const [input, setInput] = useState("");
+
   useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/login");
+
     onSnapshot(q, (snapshot) => {
       setTodos(
         snapshot.docs.map((doc) => ({
@@ -24,7 +35,7 @@ const Todos = () => {
         }))
       );
     });
-  }, [input]);
+  }, [input, user, loading]);
   const addTodo = (e) => {
     e.preventDefault();
     addDoc(collection(db, "todos"), {
@@ -36,6 +47,14 @@ const Todos = () => {
 
   return (
     <>
+      <div className="">
+        <div className="flex items-center space-x-2">
+          <div>Logged in as {user?.email}</div>
+          <button className="border border-primary-500 rounded py-1 px-2" onClick={logout}>
+            Logout
+          </button>
+        </div>
+      </div>
       <h2 className="text-xl font-bold">TODO List App</h2>
       <form className="flex space-x-2 w-full md:max-w-xl justify-center">
         <input
