@@ -48,7 +48,10 @@ const Todos = () => {
       <div className="">
         <div className="flex items-center space-x-2">
           <div>Logged in as {user?.email}</div>
-          <button className="border border-primary-500 rounded py-1 px-2 hover:bg-primary-500 hover:text-white" onClick={logout}>
+          <button
+            className="border border-primary-500 rounded py-1 px-2 hover:bg-primary-500 hover:text-white"
+            onClick={logout}
+          >
             Logout
           </button>
         </div>
