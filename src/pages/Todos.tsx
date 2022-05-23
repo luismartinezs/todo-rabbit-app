@@ -3,17 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, logout } from "@/firebase/auth";
 import Todo from "@/components/Todo";
-import { db } from "@/firebase/index";
-import {
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
-
-const q = query(collection(db, "todos"), orderBy("timestamp", "desc"));
+import { subscribeGetTodos, createTodo } from "@/firebase/todos";
 
 const Todos = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -25,21 +15,15 @@ const Todos = () => {
     if (loading) return;
     if (!user) return navigate("/login");
 
-    onSnapshot(q, (snapshot) => {
-      setTodos(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          item: doc.data(),
-        }))
-      );
-    });
+    const unsubscribe = subscribeGetTodos(setTodos);
+    return () => {
+      unsubscribe();
+    };
   }, [input, user, loading]);
+
   const addTodo = (e) => {
     e.preventDefault();
-    addDoc(collection(db, "todos"), {
-      todo: input,
-      timestamp: serverTimestamp(),
-    });
+    createTodo({ title: input });
     setInput("");
   };
 
@@ -75,7 +59,7 @@ const Todos = () => {
       </form>
       <ul className="w-full md:max-w-xl">
         {todos.map((item) => (
-          <Todo key={item.id} item={item} />
+          <Todo key={item.id} todo={item} />
         ))}
       </ul>
     </>

@@ -1,15 +1,47 @@
-// TODO implement here the todos API and move it out of the UI components
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  addDoc,
+  serverTimestamp,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
+import { db } from "@/firebase/index";
+import type { Todo } from "@/types";
+import { auth } from "@/firebase/auth";
 
-const getTodos = () => {
-  //
+const todosQuery = query(collection(db, "todos"), orderBy("timestamp", "desc"));
+
+const subscribeGetTodos = (setter) => {
+  const handleSnapshot = (snapshot) => {
+    setter(snapshot.docs.map((doc) => doc.data()));
+  };
+
+  const handleError = (error) => {
+    console.error(error);
+  };
+
+  return onSnapshot(todosQuery, handleSnapshot, handleError);
 };
 
-const createTodo = () => {
-  //
+const createTodo = (todo) => {
+  if (auth.currentUser === null) {
+    return null;
+  }
+
+  const _todo: Todo = {
+    ...todo,
+    timestamp: serverTimestamp(),
+    user_uid: auth.currentUser.uid,
+  };
+
+  addDoc(collection(db, "todos"), _todo);
 };
 
 const deleteTodo = (id) => {
-  //
+  deleteDoc(doc(db, "todos", id));
 };
 
-export { getTodos, createTodo, deleteTodo };
+export { subscribeGetTodos, createTodo, deleteTodo };

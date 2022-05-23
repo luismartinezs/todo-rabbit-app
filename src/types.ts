@@ -1,11 +1,11 @@
 import { Timestamp } from "firebase/firestore";
 
 export interface Todo {
-  uid: String;
-  user_uid: Number;
   title: String;
-  description: String;
   timestamp: Timestamp;
+  user_uid: Number;
+  description?: String;
+  uid?: String;
 }
 
 export interface User {

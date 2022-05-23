@@ -9,11 +9,11 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [ ] Deploy to production
 - [x] User login
 - [ ] Each user has their own todos
-- [ ] Structure data model
+- [x] Structure data model
 - [ ] Update rules for production
   - [ ] User must be auth
   - [ ] User can only read and write their own todos
-- [ ] Write API for todos in separate file
+- [x] Write API for todos in separate file
 - [ ] Storybook
 - [ ] Setup automatic deploys when pushing main
 - [ ] Launch checklist https://firebase.google.com/support/guides/launch-checklist
