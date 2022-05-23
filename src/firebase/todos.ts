@@ -16,7 +16,11 @@ const todosQuery = query(collection(db, "todos"), orderBy("timestamp", "desc"));
 
 const subscribeGetTodos = (setter) => {
   const handleSnapshot = (snapshot) => {
-    setter(snapshot.docs.map((doc) => doc.data()));
+    setter(
+      snapshot.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+      })
+    );
   };
 
   const handleError = (error) => {

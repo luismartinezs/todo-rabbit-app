@@ -58,8 +58,8 @@ const Todos = () => {
         </button>
       </form>
       <ul className="w-full md:max-w-xl">
-        {todos.map((item) => (
-          <Todo key={item.id} todo={item} />
+        {todos.map((todo) => (
+          <Todo key={todo.id} todo={todo} />
         ))}
       </ul>
     </>
