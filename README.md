@@ -9,7 +9,11 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [ ] Deploy to production
 - [x] User login
 - [ ] Each user has their own todos
+- [ ] Structure data model
 - [ ] Update rules for production
+  - [ ] User must be auth
+  - [ ] User can only read and write their own todos
+- [ ] Write API for todos in separate file
 - [ ] Storybook
 - [ ] Setup automatic deploys when pushing main
 - [ ] Launch checklist https://firebase.google.com/support/guides/launch-checklist
@@ -45,6 +49,7 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 
 ## Reads
 
+- [How to Build a TodoApp using ReactJS and Firebase](https://www.freecodecamp.org/news/how-to-build-a-todo-application-using-reactjs-and-firebase/)
 - [Build a real-time Todo App in 30 minutes with ReactJS, TypeScript and Firebase](https://www.sipios.com/blog-tech/build-a-real-time-todo-app-in-30-minutes-with-reactjs-typescript-and-firebase)
 - [Firebase launch checklist](https://firebase.google.com/support/guides/launch-checklist)
 
