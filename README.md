@@ -11,6 +11,8 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [ ] Each user has their own todos
 - [ ] Update rules for production
 - [ ] Storybook
+- [ ] Setup automatic deploys when pushing main
+- [ ] Launch checklist https://firebase.google.com/support/guides/launch-checklist
 
 ## Dev notes
 
@@ -26,11 +28,15 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
   - Logged in users go to /
 - App
   - User logs in and can view, create, edit and delete todos
+  - Todos are stored in firestore
   - Each user has their own todos
   - One user cannot see todos from other users
+  - User can toggle todo between done and pending -> no, user simply deletes todo if it's done
+  - Changes to todos are synced with firestore
 
 ## Dev flow
 
+- Start project locally: `pnpm dev` (or `pnpm emu` in emulator mode)
 - Make changes in `dev` branch (or feature branch)
 - Push `dev` branch to remote as I work
 - Make sure new code works in localhost
