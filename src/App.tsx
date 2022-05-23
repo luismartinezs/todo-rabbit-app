@@ -4,7 +4,7 @@ import Login from "@/pages/Login";
 
 function App(): JSX.Element {
   return (
-    <div className="App flex flex-col items-center w-full space-y-6  items-center">
+    <div className="flex flex-col items-center w-full space-y-6">
       <Routes>
         <Route path="/" element={<Todos />} />
         <Route path="login" element={<Login />} />
