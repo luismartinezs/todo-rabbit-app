@@ -1,9 +1,22 @@
 rules_version = '2';
 
+// [ ] anyone can create user
+// [ ] Only user can edit its own user
+// [ ] only user can read its own user
+// [ ] only user can read and write its own todos
+// [ ] match user with todo wiht user_uid
 service cloud.firestore {
   match /databases/{database}/documents {
+    // provisionally make everything readable for logged in users
     match /{document=**} {
       allow read, write: if request.auth != null;
     }
+    // match /todos/{todo} {
+    //   allow read, write: if request.auth != null && request.auth.uid == request.resource.data.user_uid;
+    // }
+    // match /users/{user} {
+    //   allow read, update, delete: if request.auth.uid == user;
+    //   allow create: if true;
+    // }
   }
 }
