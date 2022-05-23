@@ -7,7 +7,8 @@
   "funding": "https://github.com/sponsors/luismartinezs",
   "scripts": {
     "dev": "vite",
-    "emu": "firebase emulators:start & VITE_FIREBASE_EMULATOR=1 vite",
+    "emu:dev": "VITE_FIREBASE_EMULATOR=1 vite",
+    "emu:start": "firebase emulators:start",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
