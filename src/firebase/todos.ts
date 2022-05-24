@@ -13,6 +13,11 @@ import { db } from "@/firebase/index";
 import type { Todo } from "@/types";
 import { auth } from "@/firebase/auth";
 
+/**
+ *
+ * @param setter Setter function that sets snapshot values every time they change in firestore
+ * @returns Unsubscribe function to be called on unmount
+ */
 const subscribeGetTodos = (setter) => {
   const todosQuery = query(
     collection(db, "todos"),

@@ -14,8 +14,8 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
   - [x] User must be auth
   - [x] User can only read and write their own todos
 - [x] Write API for todos in separate file
-- [ ] Launch checklist https://firebase.google.com/support/guides/launch-checklist
-- [ ] Set integration tests for firestore rules
+- [x] Launch checklist https://firebase.google.com/support/guides/launch-checklist
+- [ ] Set integration tests for firestore rules https://firebase.google.com/docs/firestore/security/test-rules-emulator
 - [ ] Storybook
 - [ ] Setup automatic deploys when pushing main
 - [ ] User can reset password
