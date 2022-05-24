@@ -21,6 +21,10 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [ ] User can reset password
 - [ ] User can delete account (all their todos are also deleted)
 
+## Domains
+
+- https://todo-rabbit.netlify.app/
+
 ## Dev notes
 
 - Use firebase-cli version 10.9.2 (`pnpm install -g firebase-tools@10.9.2`) otherwise emulator ui breaks (see [node.js - Firebase Emulator fails at startup Cannot find module --dns-result-order=ipv4first - Stack Overflow](https://stackoverflow.com/questions/72313155/firebase-emulator-fails-at-startup-cannot-find-module-dns-result-order-ipv4fir))
