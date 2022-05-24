@@ -25,6 +25,8 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [ ] User can reset password
 - [ ] User can delete account (all their todos are also deleted)
 - [ ] Integrate recaptcha (without react google recaptcha library)
+- [ ] Disable dev tools in production
+- [ ] Hide password when creating account
 
 ## Domains
 
