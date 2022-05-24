@@ -4,14 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { auth, logout } from "@/firebase/auth";
 import Todo from "@/components/Todo";
 import { subscribeGetTodos, createTodo } from "@/firebase/todos";
-import {
-  GoogleReCaptchaProvider,
-  useGoogleReCaptcha,
-  GoogleReCaptcha,
-} from "react-google-recaptcha-v3";
 
 const Todos = () => {
-  const { executeRecaptcha } = useGoogleReCaptcha();
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   const [todos, setTodos] = useState([] as Array<{ id: string }>);
@@ -30,7 +24,6 @@ const Todos = () => {
   const addTodo = (e) => {
     e.preventDefault();
     try {
-      executeRecaptcha && executeRecaptcha("MS_Pyme_DatosEmpresa");
       createTodo({ title: input });
       setInput("");
     } catch (err) {
@@ -39,7 +32,7 @@ const Todos = () => {
   };
 
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_KEY}>
+    <>
       <div className="">
         <div className="flex items-center space-x-2">
           <div>Logged in as {user?.email}</div>
@@ -53,7 +46,6 @@ const Todos = () => {
       </div>
       <h2 className="text-xl font-bold">TODO List App</h2>
       <form className="flex space-x-2 w-full md:max-w-xl justify-center">
-        <GoogleReCaptcha onVerify={(t) => console.log({ t })} />
         <input
           aria-label="Make Todo"
           type="text"
@@ -74,7 +66,7 @@ const Todos = () => {
           <Todo key={todo.id} todo={todo} />
         ))}
       </ul>
-    </GoogleReCaptchaProvider>
+    </>
   );
 };
 
