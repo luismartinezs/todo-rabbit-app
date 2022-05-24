@@ -3,7 +3,6 @@ import {
   connectAuthEmulator,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
@@ -11,10 +10,13 @@ import {
 } from "firebase/auth";
 import firebaseApp from "@/firebase/app";
 import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
+import { logEvent } from "firebase/analytics";
 import db from "@/firebase/firestore";
+import analytics from "@/firebase/analytics";
 
 const auth = getAuth(firebaseApp);
-import.meta.env.VITE_FIREBASE_EMULATOR && connectAuthEmulator(auth, "http://localhost:9099");
+import.meta.env.VITE_FIREBASE_EMULATOR &&
+  connectAuthEmulator(auth, "http://localhost:9099");
 
 const loginEmailPassword = async (email = "", password = "") => {
   if (!email || !password) return;
@@ -26,6 +28,13 @@ const loginEmailPassword = async (email = "", password = "") => {
       password
     );
     console.log(userCredential.user);
+    if (import.meta.env.PROD) {
+      try {
+        logEvent(analytics, "login");
+      } catch (err) {
+        console.error(err);
+      }
+    }
   } catch (error) {
     console.error(error);
   }
