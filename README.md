@@ -8,15 +8,18 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 - [x] Deploy to test
 - [ ] Deploy to production
 - [x] User login
-- [ ] Each user has their own todos
+- [x] Each user has their own todos
 - [x] Structure data model
-- [ ] Update rules for production
-  - [ ] User must be auth
-  - [ ] User can only read and write their own todos
+- [x] Update rules for production
+  - [x] User must be auth
+  - [x] User can only read and write their own todos
 - [x] Write API for todos in separate file
+- [ ] Launch checklist https://firebase.google.com/support/guides/launch-checklist
+- [ ] Set integration tests for firestore rules
 - [ ] Storybook
 - [ ] Setup automatic deploys when pushing main
-- [ ] Launch checklist https://firebase.google.com/support/guides/launch-checklist
+- [ ] User can reset password
+- [ ] User can delete account (all their todos are also deleted)
 
 ## Dev notes
 

@@ -2,6 +2,7 @@ import {
   collection,
   query,
   orderBy,
+  where,
   onSnapshot,
   addDoc,
   serverTimestamp,
@@ -12,9 +13,13 @@ import { db } from "@/firebase/index";
 import type { Todo } from "@/types";
 import { auth } from "@/firebase/auth";
 
-const todosQuery = query(collection(db, "todos"), orderBy("timestamp", "desc"));
-
 const subscribeGetTodos = (setter) => {
+  const todosQuery = query(
+    collection(db, "todos"),
+    where("user_uid", "==", auth.currentUser?.uid),
+    orderBy("timestamp", "desc")
+  );
+
   const handleSnapshot = (snapshot) => {
     setter(
       snapshot.docs.map((doc) => {
