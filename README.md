@@ -6,7 +6,6 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
 
 - [x] Read, write, delete
 - [x] Deploy to test
-- [ ] Deploy to production
 - [x] User login
 - [x] Each user has their own todos
 - [x] Structure data model
@@ -15,11 +14,17 @@ Based on this tutorial https://blog.bitsrc.io/build-a-todo-list-application-usin
   - [x] User can only read and write their own todos
 - [x] Write API for todos in separate file
 - [x] Launch checklist https://firebase.google.com/support/guides/launch-checklist
+- [x] Deploy to production
+- [x] Setup automatic deploys when pushing main
+- [ ] Responsive layout
 - [ ] Set integration tests for firestore rules https://firebase.google.com/docs/firestore/security/test-rules-emulator
-- [ ] Storybook
-- [ ] Setup automatic deploys when pushing main
+- [ ] Use typescript
+- [ ] Test react components
+- [ ] Integrate Storybook
+- [ ] Limit user access with rules: a user can read and write only their own user data
 - [ ] User can reset password
 - [ ] User can delete account (all their todos are also deleted)
+- [ ] Integrate recaptcha (without react google recaptcha library)
 
 ## Domains
 
