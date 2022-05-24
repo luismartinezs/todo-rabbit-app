@@ -28,7 +28,7 @@ const loginEmailPassword = async (email = "", password = "") => {
       password
     );
     console.log(userCredential.user);
-    if (import.meta.env.PROD) {
+    if (import.meta.env.PROD && analytics) {
       try {
         logEvent(analytics, "login");
       } catch (err) {
